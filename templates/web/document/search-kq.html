@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <style>
+        .ds{
+            background-color: blanchedalmond;
+            weight: 100%;
+            height: 100px;
+            margin-top: 20px;
+            margin-left:20px;
+            margin-right: 20px;
+        }
+        .ds1{
+            background-color: blanchedalmond;
+            weight: 30%;
+            height: 100px;
+            float: left;
+            margin-left: 50px;
+            text-align: center;
+            padding: 40px;
+        }
+    </style>
+    <title>Search KQ</title>
+</head>
+<body style="background-color: green;">
+<div layout:fragment="main-content">
+    <div style="background-color: LightGray; width: 70%; height: 600px; margin-left: 200px;">
+        <form th:action="@{/searchKq}" method="get">
+            <div style="padding-top: 100px; padding-left: 50px; float:left;">
+                <label>Tag</label>
+            </div>
+            <div style="padding-top: 100px; padding-left: 150px; float: left;">
+                <input type="checkbox" class="form-check-input" id="check1" name="option1" value="pdf">
+                <label for="check1">pdf</label>
+            </div>
+            <div style="padding-top: 100px; padding-left: 150px; float: left;">
+                <input type="checkbox" class="form-check-input" id="check2" name="option2" value="doc">
+                <label for="check2">doc</label>
+            </div>
+            <div style="padding-top: 100px; padding-left: 150px; float: left;">
+                <input type="checkbox" class="form-check-input" id="check3" name="option3" value="ppt">
+                <label for="check3">ppt</label>
+            </div>
+            <!--<input type="text" placeholder="Tìm kiếm..." name="searchOpen" style="width: 60%; margin-top: 70px; margin-left: 200px; clear: left;">-->
+            <button type="submit" style="width: 20%; margin-top: 30px; margin-left: 400px; clear: left; background-color: blue">Search</button>
+        </form>
+    </div>
+    <div th:each="doc:${docs}">
+        <div class="ds">
+            <div class="ds1" th:text="${doc.getDoc_name()}"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

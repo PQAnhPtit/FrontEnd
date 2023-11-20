@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Google Drive File</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.css"/>
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js">
+    </script>
+    <script src="/19.9.2023/Front-End/static/sweetalert/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/sweetalert/sweetalert2.min.css"/>
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/main.css"/>
+    <style>
+        table, th, td{
+           border: 1px solid black;
+        }
+
+        .a{
+            float: left;
+            margin-top: 20px;
+            margin-left: 100px;
+        }
+
+        .abc{
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: LightGray;
+        }
+    </style>
+</head>
+<body style="background-color: green;">
+
+<!--
+<div class="w3-container">
+    <div class="row" style="background-color: red;">
+
+        <div class="col-sm-8" style="background-color:#a5dc86;">
+            <form th:href="@{/}" id="formSubmit1" method="get">
+                <div class="table-responsive">
+
+                    <h1 style="text-align: center">Get Folder Google Drive</h1>
+                    <table id="customer_data" class="table table-bordered table-striped" width="100%">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center">Name</th>
+                            <th style="text-align: center">Link</th>
+                            <th style="text-align: center">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="data-google">
+                        <tr th:each="item : ${DTO_FOLDER}">
+                            <td style="text-align: center" th:text="${item.name}"></td>
+                            <th style="text-align: center"><a th:href="${item.link}" target="_blank">Go to link...</a></th>
+                            <th style="text-align: center"><a style="background-color: #f44336;color: white;padding: 5px 10px;text-align: center;text-decoration: none;display: inline-block;" th:href="@{'/delete/folder/'+${item.id}}">Delete</a></th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+-->
+
+<div style="width: 100%; height: 100px; background-color: LightGray;">
+    <h3 style="text-align: center; margin-top: 0px;">Chèn tệp bằng cách sử dụng Google Drive</h3>
+    <ul class="abc">
+        <li class="a"><a class= "b" href="/19.9.2023/Front-End/templates/web/document/driver/my-driver.html?id=root">Drive của tôi</a></li>
+        <!--<li class="a"><a class= "b" href="/19.9.2023/Front-End/templates/web/document/driver/upload-file-driver.html">Tải lên</a></li>-->
+    </ul>
+</div>
+
+
+</body>
+</html>

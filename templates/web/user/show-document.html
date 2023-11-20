@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <title>Show Document</title>
+    <style>
+    .tabletl{
+        background-color: white;
+        border: 3px solid grey;
+        box-shadow: 0 0 5px 2px grey;
+        height: 500px;
+        line-height: 100px;
+        text-align: center;
+        width: 83%;
+        margin-top: 30px;
+        margin-left: 100px;
+    }
+  </style>
+</head>
+<body>
+<div layout:fragment="main-content">
+    <div style="width: 20%; height: 600px; background-color: PowderBlue; padding-top: 50px; float: left">
+        <div>
+            <div style="width: 100%; height: 27px; background-color: PowderBlue; margin-top: 0px;"></div>
+        </div>
+        <!--<div th:each="item: ${list_category}">
+            <a th:href="@{ '/listDocument/category?id=' + ${item.getCategory_id()} }">
+                <button style="width: 100%; height: 50px; background-color: Peru; margin-top: 0px;" th:text="${item.getCategory_name()}"></button>
+            </a>
+        </div>-->
+    </div>
+    <div style="width: 80%; height: auto; background-color: white; padding-top: 70px; float:left">
+        <div class="tabletl">
+            <div style="background-color: Green; width: 100%; height: 70px;">
+                <span style="margin-bottom: 40px; ">Thông tin chi tiết</span>
+            </div>
+            <div>
+                <label style="float: left; margin-left: 30px;">Tên Tài liệu:</label>
+                <div style="float: left; margin-left: 50px;" th:text="${doc}"></div>
+            </div>
+            <div style="clear: left"></div>
+            <div>
+                <label style="float: left; margin-left: 30px;">Loại:</label>
+                <div style="float: left; margin-left: 50px;" th:text="${cate_name}"></div>
+            </div>
+            <div style="clear: left"></div>
+            <div>
+                <label style="float: left; margin-left: 30px;">Mô tả tài liệu:</label>
+                <div style="float: left; margin-left: 50px;" th:text="${description}"></div>
+            </div>
+            <div style="clear: left"></div>
+            <div th:object="${document}">
+                <div style="float: left; margin-left: 30px;">
+                    <span th:if="${document.getLink() == null }">
+                        <a th:href="@{/downloadFile(id=${document.getDocument_id()})}" type="button" class="btn btn-success" style="margin-right: 0px; margin-top: 0px;" target="_blank">Download</a>
+                    </span>
+                    <span th:if="${document.getLink() != null}">
+                        <a th:href="${document.getLink()}" type="button" class="btn btn-success" style="margin-right: 0px; margin-top: 0px;" target="_blank">Download</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

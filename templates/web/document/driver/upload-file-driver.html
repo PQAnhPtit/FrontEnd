@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Google Drive File</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.css"/>
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js">
+    </script>
+    <script src="/19.9.2023/Front-End/static/sweetalert/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/sweetalert/sweetalert2.min.css"/>
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/main.css"/>
+	<script src="/19.9.2023/Front-End/static/js/app.js"></script>
+    <style>
+        table, th, td{
+           border: 1px solid black;
+        }
+
+        .a{
+            float: left;
+            margin-top: 20px;
+            margin-left: 100px;
+        }
+
+        .abc{
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: LightGray;
+        }
+    </style>
+</head>
+<body style="background-color: green;">
+
+<div style="width: 100%; height: 100px; background-color: LightGray;">
+    <h3 style="text-align: center; margin-top: 0px;">Chèn tệp bằng cách sử dụng Google Drive</h3>
+    <ul class="abc">
+        <li class="a"><a class= "b" href="/19.9.2023/Front-End/templates/web/document/driver/my-driver.html?id=root">Drive của tôi</a></li>
+        <li class="a"><a class= "b" href="/19.9.2023/Front-End/templates/web/document/driver/upload-file-driver.html">Tải lên</a></li>
+    </ul>
+</div>
+
+<br><br>
+
+<div style="background-color: #f8bb86; margin-left: 500px; width: 30%; height: 300px;">
+    <form th:action="@{/upload/file}" method="post" enctype="multipart/form-data">
+        <br>
+        <h5 style="text-align: center">Upload to Drive</h5>
+
+        <br>
+        <div class="input-file-container" style=" margin: auto; border-radius: 10px;">
+            <input class="input-file" id="my-file" type="file" name="fileUpload">
+            <label tabindex="0" for="my-file" class="input-file-trigger">Choose a file</label>
+            <p class="file-return"></p>
+        </div>
+        <br>
+        <div class="buttonHolder">
+            <label for="radio">Public file?</label>
+            <div id="radio">
+                <input type="radio" id="yes" name="shared" value="true" checked>
+                <label for="yes">Yes</label><br>
+                <input type="radio" id="no" name="shared" value="false">
+                <label for="no">No</label><br>
+                <input id="btnUpload" class="btn-upload" type="submit" value="Submit"/>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

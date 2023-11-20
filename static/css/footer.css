@@ -1,0 +1,15 @@
+footer{
+	background-color: midnightblue;
+	margin: 0 auto;
+	border-bottom: 1px solid #eee
+}
+
+.last{
+	text-align:center;
+	padding:20px;
+	font-size:15px
+}
+
+.last_copyright{
+	color: white;
+}

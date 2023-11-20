@@ -1,0 +1,106 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;
+}
+.form-wrap{
+    padding:30px;
+    min-height: 100vh;
+    background-color: #344a72;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    width: 400px;
+    height: 680px;
+    padding: 32px 24px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+.form-header{
+    padding-bottom: 0px;
+}
+.form-header .heading{
+    text-align: center;
+    font-size: 2.5rem;
+}
+.desc{
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.desc .nav{
+    padding: 0 4px;
+}
+.form-group{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 8px 0;
+    position: relative;
+}
+.form-lable{
+    font-weight: 800;
+    font-size: 1.5rem;
+    padding-bottom: 4px;
+}
+.form-input{
+    font-size: 1.5rem;
+    padding: 8px 12px;
+    outline: none;
+    border: 3px solid rgb(179, 176, 176);
+    border-radius: 4px;
+}
+.form-input:hover{
+    border-color: #aef5ae;
+}
+.form-input:focus{
+    border-color: #47c247;
+}
+.form-message{
+    line-height: 1.2rem;
+    font-size: 1.2rem;
+    margin-top: 4px;
+    color: rgba(247, 57, 57, 0.89);
+}
+.toggle-password{
+    display: block;
+    width: 20px;
+    height: 20px;
+
+    line-height: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+
+    position: absolute;
+    top: 45px;
+    right: 6px;
+}
+.form-submit{
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 20px;
+
+    border-radius: 4px;
+    border: none;
+
+    background-color: #47c247;
+    font-size: 2.2rem;
+    color:white;
+}
+.form-submit i{
+    margin-left: 10px;
+}
+.form-submit:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+

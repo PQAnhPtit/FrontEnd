@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#6c757d">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="css/upload_file/bootstrap.min.css">
+    <link rel="stylesheet" href="css/upload_file/prism.min.css">
+    <link rel="stylesheet" href="css/upload_file/theme.min.css">
+    <link rel="stylesheet" href="css/upload_file/jquery.form-validator.min.css">
+    <link rel="stylesheet" href="css/upload_file/bs-dropzone.min.css">
+</head>
+<body>
+<main class="pt-5" style="background-color: forestgreen;">
+
+    <div class="container py-4">
+        <div class="col col-md-4 mb-3 pl-0">
+            <form method="post" th:action="@{/uploadFiles}" class="mb-0" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" name="imagen_1" id="imagen_1" multiple required />
+                </div>
+                <div class="form-group mb-0">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</main>
+<script type="text/javascript" src="js/upload_file/jquery.min.js"></script>
+<script type="text/javascript" src="js/upload_file/popper.min.js"></script>
+<script type="text/javascript" src="js/upload_file/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/upload_file/prism.min.js"></script>
+<script type="text/javascript" src="js/upload_file/jquery.form-validator.min.js"></script>
+<script type="text/javascript" src="js/upload_file/bs-dropzone.min.js"></script>
+<script>
+		$(function () {
+
+			$.validate({
+				lang: 'es',
+				inputParentClassOnSuccess: 'valid',
+				inputParentClassOnError: 'invalid'
+			});
+
+			let $imagen_1 = $('#imagen_1'), $imagen_2 = $('#imagen_2'), $imagen_3 = $('#imagen_3'), $imagen_4 = $('#imagen_4'), $imagen_5 = $('#imagen_5'), $imagen_6 = $('#imagen_6');
+
+			$imagen_1.bs_dropzone();
+
+			$imagen_2.bs_dropzone({
+				preview: true
+			});
+
+			$imagen_3.bs_dropzone({
+				boxClass: 'alert p-5 text-center font-weight-bold',
+				noneColorClass: 'alert-info border-info',
+				dragColorClass: 'alert-warning border-warning',
+				doneColorClass: 'alert-success border-success',
+				failColorClass: 'alert-danger border-danger'
+			});
+
+			$imagen_4.bs_dropzone({
+				language:{
+					emptyText: '[a]',
+					dragText: '[b]',
+					dropText: '[c]'
+				}
+			});
+
+			$imagen_5.bs_dropzone({
+				preview: true,
+				accepted: ['jpg', 'jpeg', 'png'],
+				dropzoneTemplate: '<div class="bs-dropzone"><div class="bs-dropzone-area"></div><div class="bs-dropzone-message"></div><div class="bs-dropzone-preview mt-0"></div></div>',
+				parentTemplate: '<div class="row ml-0 justify-content-center align-items-center"></div>',
+				childTemplate: '<div class="col-4 col-md-3 pl-0"></div>',
+				imageClass: 'img-fluid mt-3 rounded'
+			});
+
+			$imagen_6.bs_dropzone({
+				change: function (element, files) {
+					alert(files.length + ' Uploaded');
+				}
+			});
+
+		});
+</script>
+</body>
+</html>

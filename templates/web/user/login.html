@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/login.css">
+	<script src="/19.9.2023/Front-End/static/js/app.js"></script>
+    <title>Login</title>
+</head>
+<body>
+<div class="form-wrap">
+    <div class="form">
+            <div class="form-header">
+                <h3 class="heading">Login</h3>
+            </div>
+
+            <div class="form-group">
+                <label for="userName" class="form-lable">Email</label>
+                <input type="text" id="email" class="form-input" name="email"
+                       placeholder="Enter the Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-lable">Password</label>
+                <input type="password" id="password" class="form-input" name="password"
+                       placeholder="Enter the password" required>
+                <span class="toggle-password"><i class="far fa-eye-slash"></i></span>
+            </div>
+            <!--<div th:if="${msg}" th:text="${msg}" style="color: red;"></div>-->
+            <button class="form-submit" onclick="login()">Login</button>
+			
+			
+        <div class="desc">
+            <br>
+            <p class="desc-text">Don't you have a account?</p>
+            <a href="/19.9.2023/Front-End/templates/web/user/register.html">Register</a>
+        </div>
+    </div>
+</div>
+<script src="/19.9.2023/Front-End/static/js/login.js"></script>
+</body>
+</html>

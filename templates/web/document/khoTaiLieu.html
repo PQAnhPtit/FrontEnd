@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/navbar.css">
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/footer.css">
+	<script src="/19.9.2023/Front-End/static/js/app.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <title>List Document</title>
+  <style>
+    .tabletl{
+        background-color: white;
+        border: 3px solid grey;
+        box-shadow: 0 0 5px 2px grey;
+        height: auto;
+        line-height: 100px;
+        text-align: center;
+        width: 83%;
+        margin-top: 30px;
+        margin-left: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<section id="navbar">
+    <div class="navbar-bar navbar-card-2 notranslate" style="padding-left:12px;padding-right:16px;">
+
+        <a th:href="@{/home}" class="navbar-bar-item navbar-button navbar-hover-none navbar-left navbar-padding-16" title="Home">
+            <img src="/19.9.2023/Front-End/static/images/logo.png" alt="logo">
+        </a>
+
+        <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
+           href="/19.9.2023/Front-End/templates/web/user/home.html" title="Home">Home</a>
+
+
+        <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
+           href="javascript:void(0)" onclick="navbar_open_nav('menus')" id="navbtn_menus" title="Menu">Category
+            <i class='fas fa-caret-down'></i>
+            <i class='fas fa-caret-up' style="display:none"></i>
+        </a>
+
+
+        <div id="my-page">
+		    <script>handleMyPage()</script>
+		</div>
+
+        <!--<a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
+           th:href="@{/listDocument}" title="share">Document</a>-->
+
+<!--
+        <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
+           th:href="@{/searchDocument}" title="share">Search Document</a>-->
+
+        <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
+           th:href="@{/exchange}" title="share">Hỏi đáp</a>
+
+        <a class="navbar-bar-item navbar-button bar-item-hover navbar-padding-24"
+           href="javascript:void(0)" onclick="navbar_open()" id="navbtn_menu" title="Menu">Category
+            <i class='fas fa-caret-down'></i>
+            <i class='fas fa-caret-up' style="display:none"></i>
+        </a>
+		
+		<!--
+        <div th:if="${checkCookie == 1}">
+            <div id="loginactioncontainer" class="navbar-right navbar-padding-16">
+                <a th:href="@{/user_information}">
+                    <img src="/19.9.2023/Front-End/static/images/avt.jpg" class="w3-circle" style="height:50px;width:50px" alt="Avatar">
+                </a>
+            </div>
+        </div>
+		-->
+		
+		<div id="hllogin"></div>
+		<script>handleLogin()</script>
+		
+		<!--
+        <div th:if="${checkCookie != 1}">
+            <div id="loginactioncontainer1" class="navbar-right navbar-padding-16">
+                <a id="navbarloginbtn" target="_self" href="/19.9.2023/Front-End/templates/web/user/login.html">Login</a>
+            </div>
+        </div>
+		-->
+
+    </div>
+
+    <div id='myAccordion' class="navbar-card-2 navbar-center navbar-hide-large"
+         style="display:none;cursor:default;background-color:#E7E9EB">
+        <a href="javascript:void(0)" onclick="navbar_close()"
+           class="navbar-button navbar-xxlarge navbar-right">&times;</a><br>
+        <div class="navbar-container navbar-padding-32">
+            <a class="navbar-button navbar-block" style="font-size:22px;" onclick="open_xs_menu('menus');"
+               href="javascript:void(0);">Menu <i class='fa fa-caret-down'></i></a>
+            <div id="sectionxs_menus" class="navbar-left-align navbar-show"
+                 style="background-color:#282A35;color:white;"></div>
+        </div>
+    </div>
+
+    <nav id="nav_menus" class="navbar-hide-small navex"
+         style="position:absolute;background-color:#282A35;color:white;padding-bottom:60px;">
+        <div class="navbar-content" style="max-width:1100px;font-size:18px">
+            <span onclick="navbar_close_nav('menus')"
+                  class="navbar-button navbar-xxxlarge navbar-display-topright navbar-hover-white"
+                  style="padding-right:30px;padding-left:30px;">&times;</span><br>
+            <div class="navbar-row-padding navbar-bar-block">
+                <div class="navbar-container" style="padding-left:13px">
+                    <h2 style="color:#FFF4A3;"><b>Tài liệu tham khảo</b></h2>
+                </div>
+                <div th:each="item:${list_category}">
+                    <div class="navbar-col l3 m6" id="listCategory">
+					<!--
+                        <a class="navbar-bar-item navbar-button" th:text="${item.getCategory_name()}" target="_self"
+                           th:href="@{ '/listDocument/category?id=' + ${item.getCategory_id()} }"></a>
+						   -->
+						   <script>navbarCate()</script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br class="hidesm">
+    </nav>
+</section>
+
+
+<div layout:fragment="main-content">
+  <div style="width: 20%; height: 700px; background-color: PowderBlue; padding-top: 50px; float: left">
+    <a href="/19.9.2023/Front-End/templates/web/document/upl.html">
+      <button style="width: 100%; height: 50px; background-color: Gray; margin-top: 27px;">
+        Upload File
+      </button>
+    </a>
+	
+	<div id="navListCategory">
+	    <script>getNavListCategory()</script>
+	</div>
+	
+	
+	<!--
+    <div th:each="item: ${list_category}">
+      <a th:href="@{ '/listDocument/category?id=' + ${item.getCategory_id()} }">
+        <button style="width: 100%; height: 50px; background-color: Peru; margin-top: 0px;" th:text="${item.getCategory_name()}"></button>
+      </a>
+    </div>
+	-->
+  </div>
+  <div style="width: 80%; height: auto; background-color: white; padding-top: 70px; float:left">
+    <!--<div th:each="userDoc: ${listUserDoc}">
+      <div th:each="doc: ${docs}">
+        <div th:if="${userDoc.getDocument_id() == doc.getDocument_id()}">
+          <a th:href="@{/download/file/{id}(id=${doc.doc_ma})}">
+            <button style="height: 150px; text-align: center; width: 15%; background-color: blue; margin: 25px; float: left">
+              <img th:src="@{${doc.doc_type}}" alt="Image" style="width:100% ;height:90px;">
+              <div style="height: 30px; margin-top: 10px; text-align: center; width: 100%; background-color: Orange;" th:text="${doc.doc_name}"></div>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>-->
+
+    <div style="margin-left: 100px;" id="category_name">
+        <script>getCategoryName()</script>
+    </div>
+	
+	<div class="tabletl">
+      <div style="margin-top: 30px;"></div>
+            <div style="background-color: PeachPuff; width: 93%; height: 70px; margin-left: 30px; border-bottom: 1px solid Gray;" id="listDocument123">
+                <script>getAllDocumentKho()</script>
+            </div>
+      </div>
+    </div>
+	
+	
+	<!--
+    <div class="tabletl">
+      <div style="margin-top: 30px;"></div>
+      <div th:each="userDoc: ${listUserDoc}">
+        <div th:each="doc: ${docs}">
+          <div th:if="${userDoc.getDocument_id() == doc.getDocument_id()}">
+            <div style="background-color: PeachPuff; width: 93%; height: 70px; margin-left: 30px; border-bottom: 1px solid Gray;">
+              <!--<h4 style="margin-top: 23px; float: left; margin-left: 30px;" th:text="${doc.doc_ma}"></h4>
+              <h5 style="margin-top: 25px; float: left; margin-left: 50px;" th:text="${doc.getDocument_name()}">ffewfew</h5>
+              <a th:href="@{/detail(id=${userDoc.getUser_document_id()})}" type="button" class="btn btn-success" style="margin-right: 30px; margin-top: 15px; float: right;">Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	-->
+
+  </div>
+</div>
+
+<footer>
+    <section class="last">
+        <span class="last_copyright">Copyright &copy; DATN 2023 12 - PQA</span>
+    </section>
+</footer>
+
+<script src="/19.9.2023/Front-End/static/js/navbar.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

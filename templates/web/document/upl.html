@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#6c757d">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/upload_file/bootstrap.min.css">
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/upload_file/prism.min.css">
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/upload_file/theme.min.css">
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/upload_file/jquery.form-validator.min.css">
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/upload_file/bs-dropzone.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Trao đổi tài liệu</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/navbar.css">
+    <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/footer.css">
+	<script src="/19.9.2023/Front-End/static/js/app.js"></script>
+</head>
+<body>
+<main style="background-color: forestgreen; padding-top: 0px;">
+
+    <section id="navbar">
+    <div class="navbar-bar navbar-card-2 notranslate" style="padding-left:12px;padding-right:16px;">
+
+        <a th:href="@{/home}" class="navbar-bar-item navbar-button navbar-hover-none navbar-left navbar-padding-16" title="Home">
+            <img src="/19.9.2023/Front-End/static/images/logo.png" alt="logo">
+        </a>
+
+        <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
+           href="/19.9.2023/Front-End/templates/web/user/home.html" title="Home">Home</a>
+
+
+        <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
+           href="javascript:void(0)" onclick="navbar_open_nav('menus')" id="navbtn_menus" title="Menu">Category
+            <i class='fas fa-caret-down'></i>
+            <i class='fas fa-caret-up' style="display:none"></i>
+        </a>
+
+
+        <div id="my-page">
+		    <script>handleMyPage()</script>
+		</div>
+
+        <!--<a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
+           th:href="@{/listDocument}" title="share">Document</a>-->
+
+<!--
+        <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
+           th:href="@{/searchDocument}" title="share">Search Document</a>-->
+
+        <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
+           th:href="@{/exchange}" title="share">Hỏi đáp</a>
+
+        <a class="navbar-bar-item navbar-button bar-item-hover navbar-padding-24"
+           href="javascript:void(0)" onclick="navbar_open()" id="navbtn_menu" title="Menu">Category
+            <i class='fas fa-caret-down'></i>
+            <i class='fas fa-caret-up' style="display:none"></i>
+        </a>
+		
+		<!--
+        <div th:if="${checkCookie == 1}">
+            <div id="loginactioncontainer" class="navbar-right navbar-padding-16">
+                <a th:href="@{/user_information}">
+                    <img src="/19.9.2023/Front-End/static/images/avt.jpg" class="w3-circle" style="height:50px;width:50px" alt="Avatar">
+                </a>
+            </div>
+        </div>
+		-->
+		
+		<div id="hllogin"></div>
+		<script>handleLogin()</script>
+		
+		<!--
+        <div th:if="${checkCookie != 1}">
+            <div id="loginactioncontainer1" class="navbar-right navbar-padding-16">
+                <a id="navbarloginbtn" target="_self" href="/19.9.2023/Front-End/templates/web/user/login.html">Login</a>
+            </div>
+        </div>
+		-->
+
+    </div>
+
+    <div id='myAccordion' class="navbar-card-2 navbar-center navbar-hide-large"
+         style="display:none;cursor:default;background-color:#E7E9EB">
+        <a href="javascript:void(0)" onclick="navbar_close()"
+           class="navbar-button navbar-xxlarge navbar-right">&times;</a><br>
+        <div class="navbar-container navbar-padding-32">
+            <a class="navbar-button navbar-block" style="font-size:22px;" onclick="open_xs_menu('menus');"
+               href="javascript:void(0);">Menu <i class='fa fa-caret-down'></i></a>
+            <div id="sectionxs_menus" class="navbar-left-align navbar-show"
+                 style="background-color:#282A35;color:white;"></div>
+        </div>
+    </div>
+
+    <nav id="nav_menus" class="navbar-hide-small navex"
+         style="position:absolute;background-color:#282A35;color:white;padding-bottom:60px;">
+        <div class="navbar-content" style="max-width:1100px;font-size:18px">
+            <span onclick="navbar_close_nav('menus')"
+                  class="navbar-button navbar-xxxlarge navbar-display-topright navbar-hover-white"
+                  style="padding-right:30px;padding-left:30px;">&times;</span><br>
+            <div class="navbar-row-padding navbar-bar-block">
+                <div class="navbar-container" style="padding-left:13px">
+                    <h2 style="color:#FFF4A3;"><b>Tài liệu tham khảo</b></h2>
+                </div>
+                <div th:each="item:${list_category}">
+                    <div class="navbar-col l3 m6" id="listCategory">
+					<!--
+                        <a class="navbar-bar-item navbar-button" th:text="${item.getCategory_name()}" target="_self"
+                           th:href="@{ '/listDocument/category?id=' + ${item.getCategory_id()} }"></a>
+						   -->
+						   <script>navbarCate()</script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br class="hidesm">
+    </nav>
+</section>
+
+    <div style="width: 20%; height: 607px; background-color: PowderBlue; padding-top: 0px; float: left; padding-top: 48px;">
+        <a th:href="@{/upl}">
+            <button style="width: 100%; height: 50px; background-color: Gray; margin-top: 27px;">
+                From Google Drive
+            </button>
+        </a>
+		<!--
+        <a th:href="@{/upl-gdri}">
+            <button style="width: 100%; height: 50px; background-color: Gray; margin-top: 0px;">
+                From Google Drive
+            </button>
+        </a>
+		-->
+    </div>
+
+    <div class="container py-4">
+		<div>
+		  <div style="background-color: white; padding: 30px; margin-left: 300px; margin-top: 100px;" id="upload-file-kho">
+			<div class="form-group">
+			  <label style="margin-left: 280px;">Information Document</label>
+			  <br>
+			</div>
+			<div class="form-group">
+			  <label>Name</label>
+			  <input type="text" class="form-control" name="name"
+					 placeholder="name" required>
+			</div>
+			<div class="form-group">
+			  <label>Description</label>
+			  <textarea rows="4" cols="50" class="form-control" name="description"
+						placeholder="description" required></textarea>
+			</div>
+			<div class="form-group">
+			  <a href="#" onclick="myFunction()">Choose file from Google Drive: </a>
+			  <span id="demo">
+			      <!--<script>chooseFile()</script>-->
+			  </span>
+			  
+			  <span id="myDIV" style="display: none; margin-left: 200px;">
+				<br>
+				<a href="https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=894784526742-rl28f2cge8ht8t2i8q90mgtlshhh1if5.apps.googleusercontent.com&redirect_uri=http://localhost:8081/Callback&response_type=code&scope=https://www.googleapis.com/auth/drive" target="_blank" rel="noopener noreferrer" style="color: red;">Confirm</a>
+			  </span>
+			</div>
+			<div class="form-group" >
+			    <label>Category</label>
+				<select name="listCate" id="listCate">
+				      <script>getAllCategoryForm()</script>
+				</select>
+			</div>
+			
+			<div class="form-group">
+			  <button type="submit" class="btn btn-primary" onclick="xlUpload()">Submit</button>
+			</div>
+		  </div>
+		</div>
+		
+  </div>
+
+    <footer>
+    <section class="last">
+        <span class="last_copyright">Copyright &copy; DATN 2023 12 - PQA</span>
+    </section>
+</footer>
+</main>
+<script type="text/javascript" src="/19.9.2023/Front-End/static/js/upload_file/jquery.min.js"></script>
+<script type="text/javascript" src="/19.9.2023/Front-End/static/js/upload_file/popper.min.js"></script>
+<script type="text/javascript" src="/19.9.2023/Front-End/static/js/upload_file/bootstrap.min.js"></script>
+<script type="text/javascript" src="/19.9.2023/Front-End/static/js/upload_file/prism.min.js"></script>
+<script type="text/javascript" src="/19.9.2023/Front-End/static/js/upload_file/jquery.form-validator.min.js"></script>
+<script type="text/javascript" src="/19.9.2023/Front-End/static/js/upload_file/bs-dropzone.min.js"></script>
+<script>
+		$(function () {
+			
+			$.validate({
+				lang: 'es',
+				inputParentClassOnSuccess: 'valid',
+				inputParentClassOnError: 'invalid'
+			});
+
+			let $imagen_1 = $('#imagen_1'), $imagen_2 = $('#imagen_2'), $imagen_3 = $('#imagen_3'), $imagen_4 = $('#imagen_4'), $imagen_5 = $('#imagen_5'), $imagen_6 = $('#imagen_6');
+
+			$imagen_1.bs_dropzone();
+
+			$imagen_2.bs_dropzone({
+				preview: true
+			});
+
+			$imagen_3.bs_dropzone({
+				boxClass: 'alert p-5 text-center font-weight-bold',
+				noneColorClass: 'alert-info border-info',
+				dragColorClass: 'alert-warning border-warning',
+				doneColorClass: 'alert-success border-success',
+				failColorClass: 'alert-danger border-danger'
+			});
+
+			$imagen_4.bs_dropzone({
+				language:{
+					emptyText: '[a]',
+					dragText: '[b]',
+					dropText: '[c]'
+				}
+			});
+
+			$imagen_5.bs_dropzone({
+				preview: true,
+				accepted: ['jpg', 'jpeg', 'png'],
+				dropzoneTemplate: '<div class="bs-dropzone"><div class="bs-dropzone-area"></div><div class="bs-dropzone-message"></div><div class="bs-dropzone-preview mt-0"></div></div>',
+				parentTemplate: '<div class="row ml-0 justify-content-center align-items-center"></div>',
+				childTemplate: '<div class="col-4 col-md-3 pl-0"></div>',
+				imageClass: 'img-fluid mt-3 rounded'
+			});
+
+			$imagen_6.bs_dropzone({
+				change: function (element, files) {
+					alert(files.length + ' Uploaded');
+				}
+			});
+
+		});
+</script>
+<script src="/19.9.2023/Front-End/static/js/navbar.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script>
+function myFunction() {
+    fetch('http://localhost:7716/listFileDriver', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(function(response) {
+            if (response.ok) {
+                location.replace("/19.9.2023/Front-End/templates/web/document/driver/driver-common.html");
+            }
+        })
+        .catch(function(error) {
+            alert("Error: " + error.message);
+        });
+
+   
+	  var x = document.getElementById("myDIV");
+	  if (x.style.display === "none") {
+		x.style.display = "block";
+	  } else {
+		x.style.display = "none";
+	  }
+}
+</script>
+</body>
+</html>
