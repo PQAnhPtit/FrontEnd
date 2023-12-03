@@ -82,10 +82,11 @@
 
 <!--
         <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
-           th:href="@{/searchDocument}" title="share">Search Document</a>-->
+           th:href="@{/searchDocument}" title="share">Search Document</a>
 
         <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
            th:href="@{/exchange}" title="share">Hỏi đáp</a>
+		   -->
 
         <a class="navbar-bar-item navbar-button bar-item-hover navbar-padding-24"
            href="javascript:void(0)" onclick="navbar_open()" id="navbtn_menu" title="Menu">Category
@@ -158,13 +159,19 @@
         <h3 style="color: white; text-align: center; padding-top: 230px;"></h3>
         <div class="topnav">
             <div class="search-container">
-                <form th:action="@{/search}" method="get">
-                    <input type="text" placeholder="Tìm kiếm tài liệu,..." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
+                <input type="text" placeholder="Tìm kiếm tài liệu,..." name="search">
+                <button type="submit" onclick="search()"><i class="fa fa-search"></i></button>
             </div>
         </div>
     </div>
+	
+
+    <div style="background-color: aqua;">
+        <div class="tabletl">
+            <div style="margin-top: 30px;"></div>
+            <div id="search123"></div>
+        </div>
+    </div>        
 	
 	<!--
     <div th:if="${checkNull != null }">

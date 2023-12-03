@@ -1013,6 +1013,74 @@ function getDocumentDetail() {
         .catch(error => console.error(error));
 }
 
+function getMyPage() {
+	var id = localStorage.getItem("user");
+    apiUrl = domain_doc + "/my-page/" + id;
+    fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(datas => {
+            var listUser = document.querySelector('#abc12344');
+            var content = datas.map(function(data) {
+                return `
+				<div style="background-color: PeachPuff; width: 93%; height: 70px; margin-left: 30px; border-bottom: 1px solid Gray;" >
+				  <h5 style="margin-top: 25px; float: left; margin-left: 50px;">${data.name}</h5>
+                  <Button onclick="deleteDocumentMyPage(${data.id})" class="btn btn-danger" style="margin-right: 30px; margin-top: 15px; float: right;" onclick="return confirm('Are you sure want to delete it?')">delete</Button> 
+                  <a href="${data.link}" type="button" class="btn btn-success" style="margin-right: 30px; margin-top: 15px; float: right;" target="_blank">show</a>
+				  </div>
+				`;
+            });
+            listUser.innerHTML = content.join('');
+        })
+        .catch(error => console.error(error));
+}
+
+function deleteDocumentMyPage(id) {
+	var user_id = localStorage.getItem("user");
+    fetch(domain_doc + '/my-page/delete/' + user_id + '/' + id, {
+            method: 'DELETE'
+        })
+        .then(function(response) {
+            if (response.ok) {
+                alert("Deleted successfully!");
+                location.reload();
+            } else {
+                throw new Error('Response not OK');
+            }
+        })
+        .catch(function(error) {
+            alert("Error: " + error.message);
+        });
+}
+
+function search() {
+	var name = document.querySelector('input[name="search"]').value
+    apiUrl = domain_doc + "/search/" + name;
+    fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(datas => {
+            var listUser = document.querySelector('#search123');
+            var content = datas.map(function(data) {
+                return `
+				 <div style="background-color: PeachPuff; width: 93%; height: 70px; margin-left: 30px; border-bottom: 1px solid Gray;">
+                <h5 style="margin-top: 25px; float: left; margin-left: 50px;">${data.name}</h5>
+                <a href="/19.9.2023/Front-End/templates/web/document/detail.html?id=${data.id}" type="button" class="btn btn-success" style="margin-right: 30px; margin-top: 15px; float: right;">Detail</a>
+                </div>
+				`;
+            });
+            listUser.innerHTML = content.join('');
+        })
+        .catch(error => console.error(error));
+}
 
 
 

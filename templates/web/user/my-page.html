@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/navbar.css">
     <link rel="stylesheet" href="/19.9.2023/Front-End/static/css/footer.css">
 	<script src="/19.9.2023/Front-End/static/js/app.js"></script>
+	<script src="/19.9.2023/Front-End/static/js/app.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <title>My Page</title>
@@ -52,20 +53,21 @@
             <i class='fas fa-caret-up' style="display:none"></i>
         </a>
 
+
         <div id="my-page">
 		    <script>handleMyPage()</script>
 		</div>
-        
 
         <!--<a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
            th:href="@{/listDocument}" title="share">Document</a>-->
 
 <!--
         <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
-           th:href="@{/searchDocument}" title="share">Search Document</a>-->
+           th:href="@{/searchDocument}" title="share">Search Document</a>
 
         <a class="navbar-bar-item navbar-button navbar-hide-small barex bar-item-hover navbar-padding-24"
            th:href="@{/exchange}" title="share">Hỏi đáp</a>
+		   -->
 
         <a class="navbar-bar-item navbar-button bar-item-hover navbar-padding-24"
            href="javascript:void(0)" onclick="navbar_open()" id="navbtn_menu" title="Menu">Category
@@ -119,9 +121,12 @@
                     <h2 style="color:#FFF4A3;"><b>Tài liệu tham khảo</b></h2>
                 </div>
                 <div th:each="item:${list_category}">
-                    <div class="navbar-col l3 m6">
+                    <div class="navbar-col l3 m6" id="listCategory">
+					<!--
                         <a class="navbar-bar-item navbar-button" th:text="${item.getCategory_name()}" target="_self"
                            th:href="@{ '/listDocument/category?id=' + ${item.getCategory_id()} }"></a>
+						   -->
+						   <script>navbarCate()</script>
                     </div>
                 </div>
             </div>
@@ -139,6 +144,18 @@
         </a>-->
     </div>
     <div style="width: 80%; height: auto; background-color: white; padding-top: 70px; float:left">
+        <div class="tabletl">
+            <div style="margin-top: 30px;"></div>
+			    <div id="abc12344">
+				    <script>getMyPage()</script>
+				</div>
+            </div>
+        </div>
+    </div>
+	
+	
+	<!--
+	<div style="width: 80%; height: auto; background-color: white; padding-top: 70px; float:left">
 
         <div class="tabletl">
             <div style="margin-top: 30px;"></div>
@@ -148,15 +165,15 @@
                         <div style="background-color: PeachPuff; width: 93%; height: 70px; margin-left: 30px; border-bottom: 1px solid Gray;">
                             <h5 style="margin-top: 25px; float: left; margin-left: 50px;" th:text="${doc.getDocument_name()}"></h5>
                             <a th:href="@{/delete-document(id=${userDoc.getUser_document_id()})}" type="button" class="btn btn-danger" style="margin-right: 30px; margin-top: 15px; float: right;" onclick="return confirm('Are you sure want to delete it?')">delete</a>
-                            <!--<a th:href="@{/edit-document(id=${userDoc.getUser_document_id()})}" type="button" class="btn btn-warning" style="margin-right: 30px; margin-top: 15px; float: right;">edit</a>-->
+                            <!--<a th:href="@{/edit-document(id=${userDoc.getUser_document_id()})}" type="button" class="btn btn-warning" style="margin-right: 30px; margin-top: 15px; float: right;">edit</a>
                             <a th:href="@{/show-document(id=${userDoc.getUser_document_id()})}" type="button" class="btn btn-success" style="margin-right: 30px; margin-top: 15px; float: right;">show</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+	-->
 </div>
 
 <footer>
